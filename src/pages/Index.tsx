@@ -7,8 +7,82 @@ import TestimonialCard from "@/components/TestimonialCard";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import heroCharacter from "@/assets/hero-3d-character.png";
+import abstractSphere from "@/assets/abstract-sphere.png";
+import abstractCube from "@/assets/abstract-cube.png";
+import abstractTorus from "@/assets/abstract-torus.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
+  const heroImageRef = useRef<HTMLImageElement>(null);
+  const sphere1Ref = useRef<HTMLImageElement>(null);
+  const sphere2Ref = useRef<HTMLImageElement>(null);
+  const sphere3Ref = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    // Hero character animation
+    if (heroImageRef.current) {
+      gsap.fromTo(
+        heroImageRef.current,
+        { opacity: 0, y: 100, scale: 0.8 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1, 
+          duration: 1.2, 
+          ease: "power3.out",
+          delay: 0.3
+        }
+      );
+      
+      // Floating animation
+      gsap.to(heroImageRef.current, {
+        y: -20,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
+      });
+    }
+
+    // Abstract shapes animations
+    const shapes = [sphere1Ref.current, sphere2Ref.current, sphere3Ref.current];
+    shapes.forEach((shape, index) => {
+      if (shape) {
+        gsap.fromTo(
+          shape,
+          { opacity: 0, scale: 0, rotation: 0 },
+          {
+            opacity: 1,
+            scale: 1,
+            rotation: 360,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.2 * index,
+            scrollTrigger: {
+              trigger: shape,
+              start: "top 80%",
+            }
+          }
+        );
+
+        // Continuous floating and rotation
+        gsap.to(shape, {
+          y: -30,
+          rotation: 360,
+          duration: 3 + index,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut"
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
@@ -32,13 +106,42 @@ const Index = () => {
                 Get started
               </Button>
             </motion.div>
+            
+            <div className="relative hidden lg:flex justify-center items-center">
+              <img 
+                ref={heroImageRef}
+                src={heroCharacter} 
+                alt="3D Character working on laptop" 
+                className="w-full max-w-md relative z-10"
+              />
+            </div>
           </div>
         </div>
       </section>
       
       {/* About Section */}
       <section id="about" className="py-24 relative overflow-hidden">
-        <div className="container mx-auto px-6">
+        {/* 3D Abstract Shapes */}
+        <img 
+          ref={sphere1Ref}
+          src={abstractSphere} 
+          alt="" 
+          className="absolute top-10 right-10 w-32 h-32 opacity-60 pointer-events-none"
+        />
+        <img 
+          ref={sphere2Ref}
+          src={abstractCube} 
+          alt="" 
+          className="absolute bottom-20 left-20 w-40 h-40 opacity-50 pointer-events-none"
+        />
+        <img 
+          ref={sphere3Ref}
+          src={abstractTorus} 
+          alt="" 
+          className="absolute top-1/2 right-1/4 w-36 h-36 opacity-40 pointer-events-none"
+        />
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
