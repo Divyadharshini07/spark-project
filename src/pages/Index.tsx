@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Cloud, Network, Palette } from "lucide-react";
+import { Code, Database, Globe, Shield, Palette, Image, Award, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import ServiceCard from "@/components/ServiceCard";
@@ -7,10 +7,6 @@ import TestimonialCard from "@/components/TestimonialCard";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
-import abstractShape1 from "@/assets/abstract-shape-1.png";
-import abstractShape2 from "@/assets/abstract-shape-2.png";
-import abstractShape3 from "@/assets/abstract-shape-3.png";
-import abstractShape4 from "@/assets/abstract-shape-4.png";
 
 const Index = () => {
   return (
@@ -36,19 +32,6 @@ const Index = () => {
                 Get started
               </Button>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="relative"
-            >
-              <img 
-                src={abstractShape1} 
-                alt="Abstract 3D Shape" 
-                className="w-full max-w-md mx-auto animate-float"
-              />
-            </motion.div>
           </div>
         </div>
       </section>
@@ -71,29 +54,12 @@ const Index = () => {
                 Learn more
               </Button>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <img 
-                src={abstractShape2} 
-                alt="Abstract 3D Shape" 
-                className="w-full max-w-md mx-auto animate-float"
-              />
-            </motion.div>
           </div>
         </div>
       </section>
       
       {/* Services Section */}
       <section id="services" className="py-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 opacity-30">
-          <img src={abstractShape3} alt="" className="w-full h-full object-contain animate-float" />
-        </div>
-        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,24 +70,54 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">OUR SERVICES</h2>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <ServiceCard
-              icon={Cloud}
-              title="Cloud solutions"
-              description="Design your apps with interactive and dark canvas with our extensive ready to use components."
+              icon={Code}
+              title="Website Development"
+              description="Build modern, responsive websites tailored to your business needs."
               index={0}
             />
             <ServiceCard
-              icon={Network}
-              title="Network settings"
-              description="Design your apps with interactive and dark canvas with our extensive ready to use components working technologies."
+              icon={Database}
+              title="CRM & Web App Development"
+              description="Custom CRM solutions and web applications for your business."
               index={1}
             />
             <ServiceCard
-              icon={Palette}
-              title="UI UX design"
-              description="Design your apps with interactive and dark canvas with our extensive ready to use components."
+              icon={Globe}
+              title="Web Hosting & Integration"
+              description="Reliable hosting solutions with seamless third-party integrations."
               index={2}
+            />
+            <ServiceCard
+              icon={Shield}
+              title="Website Security"
+              description="Comprehensive security measures to protect your digital assets."
+              index={3}
+            />
+            <ServiceCard
+              icon={Palette}
+              title="UI/UX Design"
+              description="Create intuitive and engaging user experiences."
+              index={4}
+            />
+            <ServiceCard
+              icon={Image}
+              title="Graphic Design"
+              description="Professional graphics that elevate your brand identity."
+              index={5}
+            />
+            <ServiceCard
+              icon={Award}
+              title="Branding & Identity Design"
+              description="Build a strong brand identity that resonates with your audience."
+              index={6}
+            />
+            <ServiceCard
+              icon={Video}
+              title="Video Editing & Social Media Cuts"
+              description="Engaging video content optimized for social media platforms."
+              index={7}
             />
           </div>
         </div>
@@ -129,10 +125,6 @@ const Index = () => {
       
       {/* Testimonials Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-96 h-96 opacity-30">
-          <img src={abstractShape4} alt="" className="w-full h-full object-contain animate-float" />
-        </div>
-        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
