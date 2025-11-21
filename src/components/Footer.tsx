@@ -24,7 +24,7 @@ const Footer = () => {
           <div>
             <h3 className="font-display font-bold mb-4">Address</h3>
             <p className="text-sm text-muted-foreground">
-              Remote
+              Thiruvannamalai (Remote)
             </p>
           </div>
           
