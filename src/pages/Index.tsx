@@ -17,6 +17,10 @@ import abstractPurpleSphere from "@/assets/abstract-purple-sphere.png";
 import abstractGoldenShape from "@/assets/abstract-golden-shape.png";
 import abstractColorfulRibbon from "@/assets/abstract-colorful-ribbon.png";
 import abstractCyanSphere from "@/assets/abstract-cyan-sphere.png";
+import abstractFlowerShape from "@/assets/abstract-flower-shape.png";
+import abstractHeartShape from "@/assets/abstract-heart-shape.png";
+import abstractWaveShape from "@/assets/abstract-wave-shape.png";
+import abstractKnotShape from "@/assets/abstract-knot-shape.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,6 +32,10 @@ const Index = () => {
   const goldenShapeRef = useRef<HTMLImageElement>(null);
   const colorfulRibbonRef = useRef<HTMLImageElement>(null);
   const cyanSphereRef = useRef<HTMLImageElement>(null);
+  const flowerShapeRef = useRef<HTMLImageElement>(null);
+  const heartShapeRef = useRef<HTMLImageElement>(null);
+  const waveShapeRef = useRef<HTMLImageElement>(null);
+  const knotShapeRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     // Hero character animation
@@ -93,7 +101,11 @@ const Index = () => {
       { ref: purpleSphereRef.current, delay: 0.4 },
       { ref: goldenShapeRef.current, delay: 0.6 },
       { ref: colorfulRibbonRef.current, delay: 0.5 },
-      { ref: cyanSphereRef.current, delay: 0.7 }
+      { ref: cyanSphereRef.current, delay: 0.7 },
+      { ref: flowerShapeRef.current, delay: 0.3 },
+      { ref: heartShapeRef.current, delay: 0.5 },
+      { ref: waveShapeRef.current, delay: 0.6 },
+      { ref: knotShapeRef.current, delay: 0.4 }
     ];
 
     additionalShapes.forEach(({ ref, delay }, index) => {
@@ -135,6 +147,12 @@ const Index = () => {
       
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <img 
+          ref={flowerShapeRef}
+          src={abstractFlowerShape} 
+          alt="" 
+          className="absolute top-32 right-20 w-72 h-72 opacity-40 pointer-events-none"
+        />
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -179,6 +197,12 @@ const Index = () => {
           alt="" 
           className="absolute -bottom-20 -left-10 w-96 h-96 opacity-25 pointer-events-none blur-sm"
         />
+        <img 
+          ref={heartShapeRef}
+          src={abstractHeartShape} 
+          alt="" 
+          className="absolute bottom-32 right-32 w-64 h-64 opacity-50 pointer-events-none"
+        />
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -214,6 +238,12 @@ const Index = () => {
           src={abstractColorfulRibbon} 
           alt="" 
           className="absolute bottom-10 right-20 w-56 h-56 opacity-50 pointer-events-none"
+        />
+        <img 
+          ref={waveShapeRef}
+          src={abstractWaveShape} 
+          alt="" 
+          className="absolute top-40 left-10 w-68 h-68 opacity-55 pointer-events-none"
         />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -329,8 +359,14 @@ const Index = () => {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-card/30">
-        <div className="container mx-auto px-6">
+      <section id="contact" className="py-24 bg-card/30 relative overflow-hidden">
+        <img 
+          ref={knotShapeRef}
+          src={abstractKnotShape} 
+          alt="" 
+          className="absolute top-20 right-16 w-64 h-64 opacity-45 pointer-events-none"
+        />
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
