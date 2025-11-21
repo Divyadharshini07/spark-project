@@ -11,17 +11,15 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroCharacter from "@/assets/hero-3d-character.png";
-import abstractSphere from "@/assets/abstract-sphere.png";
-import abstractCube from "@/assets/abstract-cube.png";
-import abstractTorus from "@/assets/abstract-torus.png";
+import abstractFlow1 from "@/assets/abstract-flow-1.jpg";
+import abstractFlow2 from "@/assets/abstract-flow-2.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
   const heroImageRef = useRef<HTMLImageElement>(null);
-  const sphere1Ref = useRef<HTMLImageElement>(null);
-  const sphere2Ref = useRef<HTMLImageElement>(null);
-  const sphere3Ref = useRef<HTMLImageElement>(null);
+  const flow1Ref = useRef<HTMLImageElement>(null);
+  const flow2Ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     // Hero character animation
@@ -49,20 +47,20 @@ const Index = () => {
       });
     }
 
-    // Abstract shapes animations
-    const shapes = [sphere1Ref.current, sphere2Ref.current, sphere3Ref.current];
+    // Abstract flow shapes animations
+    const shapes = [flow1Ref.current, flow2Ref.current];
     shapes.forEach((shape, index) => {
       if (shape) {
         gsap.fromTo(
           shape,
-          { opacity: 0, scale: 0, rotation: 0 },
+          { opacity: 0, scale: 0.5, rotation: -45 },
           {
-            opacity: 1,
+            opacity: 0.7,
             scale: 1,
-            rotation: 360,
-            duration: 1.5,
-            ease: "power2.out",
-            delay: 0.2 * index,
+            rotation: 0,
+            duration: 1.8,
+            ease: "power3.out",
+            delay: 0.3 * index,
             scrollTrigger: {
               trigger: shape,
               start: "top 80%",
@@ -70,14 +68,14 @@ const Index = () => {
           }
         );
 
-        // Continuous floating and rotation
+        // Continuous floating and subtle rotation
         gsap.to(shape, {
-          y: -30,
-          rotation: 360,
-          duration: 3 + index,
+          y: index === 0 ? -40 : -30,
+          rotation: index === 0 ? 15 : -15,
+          duration: 4 + index,
           repeat: -1,
           yoyo: true,
-          ease: "power1.inOut"
+          ease: "sine.inOut"
         });
       }
     });
@@ -121,24 +119,18 @@ const Index = () => {
       
       {/* About Section */}
       <section id="about" className="py-24 relative overflow-hidden">
-        {/* 3D Abstract Shapes */}
+        {/* 3D Abstract Flow Shapes */}
         <img 
-          ref={sphere1Ref}
-          src={abstractSphere} 
+          ref={flow1Ref}
+          src={abstractFlow1} 
           alt="" 
-          className="absolute top-10 right-10 w-32 h-32 opacity-60 pointer-events-none"
+          className="absolute -top-10 -right-20 w-80 h-80 opacity-30 pointer-events-none blur-sm"
         />
         <img 
-          ref={sphere2Ref}
-          src={abstractCube} 
+          ref={flow2Ref}
+          src={abstractFlow2} 
           alt="" 
-          className="absolute bottom-20 left-20 w-40 h-40 opacity-50 pointer-events-none"
-        />
-        <img 
-          ref={sphere3Ref}
-          src={abstractTorus} 
-          alt="" 
-          className="absolute top-1/2 right-1/4 w-36 h-36 opacity-40 pointer-events-none"
+          className="absolute -bottom-20 -left-10 w-96 h-96 opacity-25 pointer-events-none blur-sm"
         />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -150,7 +142,7 @@ const Index = () => {
             >
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">ABOUT US</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Femoratek has established itself in India and across the Middle East as a leading developer in web and mobile applications. We specialize in building innovative solutions for various types of businesses, delivering superior quality that sets us apart from other agencies and companies.
+                FemoraTek is a creative-tech studio that builds modern websites, clean interfaces, secure integrations, and strong brand identities. We focus on simple, effective design and reliable development that help businesses work smarter and grow with confidence.
               </p>
               
               <Button variant="outline" className="border-primary/50 hover:bg-primary hover:text-primary-foreground">
