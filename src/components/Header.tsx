@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import femoratekLogo from "@/assets/femoratek-logo.png";
+import femoratekLogo from "@/assets/femoratek-logo-new.png";
 
 const Header = () => {
   const [showText, setShowText] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setShowText(!showText)}
           >
-            <img src={femoratekLogo} alt="Femoratek" className="h-10 w-10" />
+            <img src={femoratekLogo} alt="FemoraTek" className="h-12 w-auto" />
             {showText && (
               <span className="text-xl font-briery font-bold">FEMORATEK</span>
             )}
