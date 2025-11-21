@@ -47,7 +47,7 @@ const Index = () => {
             >
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">ABOUT US</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                We are Founded in Calicut, India. Techfive has established itself in India and whole over Middle East and is developer market and presence, building the way in development of web and mobile on various kinds of business based development mobile apps and web, which many users report from either agencies at our superior foreign company.
+                Femoratek has established itself in India and across the Middle East as a leading developer in web and mobile applications. We specialize in building innovative solutions for various types of businesses, delivering superior quality that sets us apart from other agencies and companies.
               </p>
               
               <Button variant="outline" className="border-primary/50 hover:bg-primary hover:text-primary-foreground">
