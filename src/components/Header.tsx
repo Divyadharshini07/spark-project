@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import femoratekLogo from "@/assets/femoratek-logo-new.png";
+import femoratekLogo from "@/assets/femoratek-logo-final.png";
 
 const Header = () => {
   const [showText, setShowText] = useState(false);
