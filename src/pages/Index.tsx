@@ -13,6 +13,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroCharacter from "@/assets/hero-3d-character.png";
 import abstractFlow1 from "@/assets/abstract-flow-1.jpg";
 import abstractFlow2 from "@/assets/abstract-flow-2.jpg";
+import abstractPurpleSphere from "@/assets/abstract-purple-sphere.png";
+import abstractGoldenShape from "@/assets/abstract-golden-shape.png";
+import abstractColorfulRibbon from "@/assets/abstract-colorful-ribbon.png";
+import abstractCyanSphere from "@/assets/abstract-cyan-sphere.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +24,10 @@ const Index = () => {
   const heroImageRef = useRef<HTMLImageElement>(null);
   const flow1Ref = useRef<HTMLImageElement>(null);
   const flow2Ref = useRef<HTMLImageElement>(null);
+  const purpleSphereRef = useRef<HTMLImageElement>(null);
+  const goldenShapeRef = useRef<HTMLImageElement>(null);
+  const colorfulRibbonRef = useRef<HTMLImageElement>(null);
+  const cyanSphereRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     // Hero character animation
@@ -73,6 +81,45 @@ const Index = () => {
           y: index === 0 ? -40 : -30,
           rotation: index === 0 ? 15 : -15,
           duration: 4 + index,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }
+    });
+
+    // Additional 3D abstract shapes animations
+    const additionalShapes = [
+      { ref: purpleSphereRef.current, delay: 0.4 },
+      { ref: goldenShapeRef.current, delay: 0.6 },
+      { ref: colorfulRibbonRef.current, delay: 0.5 },
+      { ref: cyanSphereRef.current, delay: 0.7 }
+    ];
+
+    additionalShapes.forEach(({ ref, delay }, index) => {
+      if (ref) {
+        gsap.fromTo(
+          ref,
+          { opacity: 0, scale: 0.3, rotation: -60 },
+          {
+            opacity: 0.8,
+            scale: 1,
+            rotation: 0,
+            duration: 2,
+            ease: "power3.out",
+            delay: delay,
+            scrollTrigger: {
+              trigger: ref,
+              start: "top 85%",
+            }
+          }
+        );
+
+        // Individual floating animations
+        gsap.to(ref, {
+          y: index % 2 === 0 ? -35 : -25,
+          rotation: index % 2 === 0 ? 20 : -20,
+          duration: 3.5 + index * 0.5,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut"
@@ -155,6 +202,20 @@ const Index = () => {
       
       {/* Services Section */}
       <section id="services" className="py-24 relative overflow-hidden">
+        {/* 3D Abstract Shapes for Services */}
+        <img 
+          ref={purpleSphereRef}
+          src={abstractPurpleSphere} 
+          alt="" 
+          className="absolute top-20 right-10 w-64 h-64 opacity-60 pointer-events-none"
+        />
+        <img 
+          ref={colorfulRibbonRef}
+          src={abstractColorfulRibbon} 
+          alt="" 
+          className="absolute bottom-10 right-20 w-56 h-56 opacity-50 pointer-events-none"
+        />
+        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -220,6 +281,20 @@ const Index = () => {
       
       {/* Testimonials Section */}
       <section className="py-24 relative overflow-hidden">
+        {/* 3D Abstract Shape for Testimonials */}
+        <img 
+          ref={goldenShapeRef}
+          src={abstractGoldenShape} 
+          alt="" 
+          className="absolute top-10 right-16 w-72 h-72 opacity-50 pointer-events-none"
+        />
+        <img 
+          ref={cyanSphereRef}
+          src={abstractCyanSphere} 
+          alt="" 
+          className="absolute bottom-20 left-10 w-60 h-60 opacity-40 pointer-events-none"
+        />
+        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
