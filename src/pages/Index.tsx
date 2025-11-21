@@ -233,20 +233,20 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <TestimonialCard
               rating={5}
-              text="At Cul the printing and typer era. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to operating, whit make a essentially unchanged."
-              author="Tech buttomy , Thriventhurum"
+              text="Working with FemoraTek was super smooth. The website came out clean, fast, and exactly how we imagined."
+              author="JVC Hallmark"
               index={0}
             />
             <TestimonialCard
               rating={5}
-              text="Lorem Ipsum is simply dummy text of the printing and type era. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the operating, whit leap into essentially unchanged."
-              author="Tech buttomy , Thriventhurum"
+              text="FemoraTek handled our branding beautifully. Professional team, quick response, and very reliable."
+              author="J3SIXTEEN"
               index={1}
             />
             <TestimonialCard
               rating={5}
-              text="Lorem Ipsum is simply dummy text of the printing and type era. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              author="Tech buttomy , Thriventhurum"
+              text="Great service and clean execution. They delivered on time and the support after launch was amazing."
+              author="Grace and Amour"
               index={2}
             />
           </div>
