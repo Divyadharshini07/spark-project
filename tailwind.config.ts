@@ -51,6 +51,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Outfit', 'system-ui', 'sans-serif'],
+        briery: ['Bricolage Grotesque', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
