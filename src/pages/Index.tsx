@@ -3,20 +3,20 @@ import { Cloud, Network, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import ServiceCard from "@/components/ServiceCard";
-import ProjectCard from "@/components/ProjectCard";
 import TestimonialCard from "@/components/TestimonialCard";
-import BlogCard from "@/components/BlogCard";
+import ContactForm from "@/components/ContactForm";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
 import abstractShape1 from "@/assets/abstract-shape-1.png";
 import abstractShape2 from "@/assets/abstract-shape-2.png";
 import abstractShape3 from "@/assets/abstract-shape-3.png";
 import abstractShape4 from "@/assets/abstract-shape-4.png";
-import blogAiImage from "@/assets/blog-ai-image.png";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
+      <WhatsAppFloat />
       
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -29,7 +29,7 @@ const Index = () => {
             >
               <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight">
                 Revolutionizing business with{" "}
-                <span className="gradient-text">Tech energy</span>
+                <span className="gradient-text">Femoratek</span>
               </h1>
               
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground glow-primary mt-6">
@@ -127,41 +127,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Recent Projects Section */}
-      <section className="py-24 bg-card/30">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-display font-bold">RECENT PROJECTS</h2>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProjectCard
-              title="Travel website"
-              description="Explore's mainly traveling websites"
-              image="Project Preview"
-              index={0}
-            />
-            <ProjectCard
-              title="Flight booking website"
-              description="Explore's mainly traveling websites"
-              image="Project Preview"
-              index={1}
-            />
-            <ProjectCard
-              title="Travel website"
-              description="Explore's mainly traveling websites"
-              image="Project Preview"
-              index={2}
-            />
-          </div>
-        </div>
-      </section>
-      
       {/* Testimonials Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute bottom-0 right-0 w-96 h-96 opacity-30">
@@ -201,8 +166,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Blog Section */}
-      <section id="blog" className="py-24 bg-card/30">
+      {/* Contact Section */}
+      <section id="contact" className="py-24 bg-card/30">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,32 +175,13 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold">OUR BLOGS</h2>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">CONTACT US</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Have a project in mind? Let's discuss how we can help bring your ideas to life.
+            </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <BlogCard
-              title="Is AI te replaced?"
-              date="10-12-2023, 8:59pm"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and type era. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown."
-              image={blogAiImage}
-              index={0}
-            />
-            <BlogCard
-              title="Is AI te replaced?"
-              date="10-12-2023, 8:59pm"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and type era. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown."
-              image={blogAiImage}
-              index={1}
-            />
-            <BlogCard
-              title="Is AI te replaced?"
-              date="10-12-2023, 8:59pm"
-              excerpt="Lorem Ipsum is simply dummy text of the printing and type era. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown."
-              image={blogAiImage}
-              index={2}
-            />
-          </div>
+          <ContactForm />
         </div>
       </section>
       
