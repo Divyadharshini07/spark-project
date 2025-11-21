@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,15 +16,68 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you soon.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      // Input validation
+      if (!formData.name.trim() || formData.name.length > 100) {
+        toast({
+          title: "Invalid name",
+          description: "Name must be between 1 and 100 characters.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!formData.message.trim() || formData.message.length > 1000) {
+        toast({
+          title: "Invalid message",
+          description: "Message must be between 1 and 1000 characters.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          message: formData.message.trim(),
+        },
+      });
+
+      if (error) {
+        console.error("Error sending email:", error);
+        toast({
+          title: "Error sending message",
+          description: "Please try again later or contact us directly.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you soon.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -93,8 +148,12 @@ const ContactForm = () => {
         />
       </div>
 
-      <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-primary">
-        Send Message
+      <Button 
+        type="submit" 
+        disabled={isSubmitting}
+        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-primary"
+      >
+        {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </motion.form>
   );

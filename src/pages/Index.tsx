@@ -105,13 +105,11 @@ const Index = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight">
-                Revolutionizing business with{" "}
-                <span className="gradient-text">Femoratek</span>
+                <span className="gradient-text">FemoraTek</span>
               </h1>
-              
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground glow-primary mt-6">
-                Get started
-              </Button>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+                Revolutionizing business with innovative digital solutions
+              </p>
             </motion.div>
             
             <div className="relative hidden lg:flex justify-center items-center">
@@ -142,13 +140,9 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">ABOUT US</h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-relaxed">
                 FemoraTek is a creative-tech studio that builds modern websites, clean interfaces, secure integrations, and strong brand identities. We focus on simple, effective design and reliable development that help businesses work smarter and grow with confidence.
               </p>
-              
-              <Button variant="outline" className="border-primary/50 hover:bg-primary hover:text-primary-foreground">
-                Learn more
-              </Button>
             </motion.div>
           </div>
         </div>
