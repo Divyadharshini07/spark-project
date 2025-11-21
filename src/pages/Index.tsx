@@ -11,31 +11,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroCharacter from "@/assets/hero-3d-character.png";
-import abstractFlow1 from "@/assets/abstract-flow-1.jpg";
-import abstractFlow2 from "@/assets/abstract-flow-2.jpg";
-import abstractPurpleSphere from "@/assets/abstract-purple-sphere.png";
-import abstractGoldenShape from "@/assets/abstract-golden-shape.png";
-import abstractColorfulRibbon from "@/assets/abstract-colorful-ribbon.png";
-import abstractCyanSphere from "@/assets/abstract-cyan-sphere.png";
 import abstractFlowerShape from "@/assets/abstract-flower-shape.png";
-import abstractHeartShape from "@/assets/abstract-heart-shape.png";
-import abstractWaveShape from "@/assets/abstract-wave-shape.png";
-import abstractKnotShape from "@/assets/abstract-knot-shape.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
   const heroImageRef = useRef<HTMLImageElement>(null);
-  const flow1Ref = useRef<HTMLImageElement>(null);
-  const flow2Ref = useRef<HTMLImageElement>(null);
-  const purpleSphereRef = useRef<HTMLImageElement>(null);
-  const goldenShapeRef = useRef<HTMLImageElement>(null);
-  const colorfulRibbonRef = useRef<HTMLImageElement>(null);
-  const cyanSphereRef = useRef<HTMLImageElement>(null);
   const flowerShapeRef = useRef<HTMLImageElement>(null);
-  const heartShapeRef = useRef<HTMLImageElement>(null);
-  const waveShapeRef = useRef<HTMLImageElement>(null);
-  const knotShapeRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     // Hero character animation
@@ -63,81 +45,30 @@ const Index = () => {
       });
     }
 
-    // Abstract flow shapes animations
-    const shapes = [flow1Ref.current, flow2Ref.current];
-    shapes.forEach((shape, index) => {
-      if (shape) {
-        gsap.fromTo(
-          shape,
-          { opacity: 0, scale: 0.5, rotation: -45 },
-          {
-            opacity: 0.7,
-            scale: 1,
-            rotation: 0,
-            duration: 1.8,
-            ease: "power3.out",
-            delay: 0.3 * index,
-            scrollTrigger: {
-              trigger: shape,
-              start: "top 80%",
-            }
-          }
-        );
+    // Flower shape animation
+    if (flowerShapeRef.current) {
+      gsap.fromTo(
+        flowerShapeRef.current,
+        { opacity: 0, scale: 0.3, rotation: -60 },
+        {
+          opacity: 0.4,
+          scale: 1,
+          rotation: 0,
+          duration: 2,
+          ease: "power3.out",
+          delay: 0.3,
+        }
+      );
 
-        // Continuous floating and subtle rotation
-        gsap.to(shape, {
-          y: index === 0 ? -40 : -30,
-          rotation: index === 0 ? 15 : -15,
-          duration: 4 + index,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut"
-        });
-      }
-    });
-
-    // Additional 3D abstract shapes animations
-    const additionalShapes = [
-      { ref: purpleSphereRef.current, delay: 0.4 },
-      { ref: goldenShapeRef.current, delay: 0.6 },
-      { ref: colorfulRibbonRef.current, delay: 0.5 },
-      { ref: cyanSphereRef.current, delay: 0.7 },
-      { ref: flowerShapeRef.current, delay: 0.3 },
-      { ref: heartShapeRef.current, delay: 0.5 },
-      { ref: waveShapeRef.current, delay: 0.6 },
-      { ref: knotShapeRef.current, delay: 0.4 }
-    ];
-
-    additionalShapes.forEach(({ ref, delay }, index) => {
-      if (ref) {
-        gsap.fromTo(
-          ref,
-          { opacity: 0, scale: 0.3, rotation: -60 },
-          {
-            opacity: 0.8,
-            scale: 1,
-            rotation: 0,
-            duration: 2,
-            ease: "power3.out",
-            delay: delay,
-            scrollTrigger: {
-              trigger: ref,
-              start: "top 85%",
-            }
-          }
-        );
-
-        // Individual floating animations
-        gsap.to(ref, {
-          y: index % 2 === 0 ? -35 : -25,
-          rotation: index % 2 === 0 ? 20 : -20,
-          duration: 3.5 + index * 0.5,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut"
-        });
-      }
-    });
+      gsap.to(flowerShapeRef.current, {
+        y: -35,
+        rotation: 20,
+        duration: 3.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
   }, []);
 
   return (
@@ -184,26 +115,6 @@ const Index = () => {
       
       {/* About Section */}
       <section id="about" className="py-24 relative overflow-hidden">
-        {/* 3D Abstract Flow Shapes */}
-        <img 
-          ref={flow1Ref}
-          src={abstractFlow1} 
-          alt="" 
-          className="absolute -top-10 -right-20 w-80 h-80 opacity-30 pointer-events-none blur-sm"
-        />
-        <img 
-          ref={flow2Ref}
-          src={abstractFlow2} 
-          alt="" 
-          className="absolute -bottom-20 -left-10 w-96 h-96 opacity-25 pointer-events-none blur-sm"
-        />
-        <img 
-          ref={heartShapeRef}
-          src={abstractHeartShape} 
-          alt="" 
-          className="absolute bottom-32 right-32 w-64 h-64 opacity-50 pointer-events-none"
-        />
-        
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -226,26 +137,6 @@ const Index = () => {
       
       {/* Services Section */}
       <section id="services" className="py-24 relative overflow-hidden">
-        {/* 3D Abstract Shapes for Services */}
-        <img 
-          ref={purpleSphereRef}
-          src={abstractPurpleSphere} 
-          alt="" 
-          className="absolute top-20 right-10 w-64 h-64 opacity-60 pointer-events-none"
-        />
-        <img 
-          ref={colorfulRibbonRef}
-          src={abstractColorfulRibbon} 
-          alt="" 
-          className="absolute bottom-10 right-20 w-56 h-56 opacity-50 pointer-events-none"
-        />
-        <img 
-          ref={waveShapeRef}
-          src={abstractWaveShape} 
-          alt="" 
-          className="absolute top-40 left-10 w-68 h-68 opacity-55 pointer-events-none"
-        />
-        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -311,20 +202,6 @@ const Index = () => {
       
       {/* Testimonials Section */}
       <section className="py-24 relative overflow-hidden">
-        {/* 3D Abstract Shape for Testimonials */}
-        <img 
-          ref={goldenShapeRef}
-          src={abstractGoldenShape} 
-          alt="" 
-          className="absolute top-10 right-16 w-72 h-72 opacity-50 pointer-events-none"
-        />
-        <img 
-          ref={cyanSphereRef}
-          src={abstractCyanSphere} 
-          alt="" 
-          className="absolute bottom-20 left-10 w-60 h-60 opacity-40 pointer-events-none"
-        />
-        
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -359,14 +236,8 @@ const Index = () => {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-card/30 relative overflow-hidden">
-        <img 
-          ref={knotShapeRef}
-          src={abstractKnotShape} 
-          alt="" 
-          className="absolute top-20 right-16 w-64 h-64 opacity-45 pointer-events-none"
-        />
-        <div className="container mx-auto px-6 relative z-10">
+      <section id="contact" className="py-24 bg-card/30">
+        <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
