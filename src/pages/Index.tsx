@@ -11,13 +11,19 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import heroCharacter from "@/assets/hero-3d-character.png";
-import abstractFlowerShape from "@/assets/abstract-flower-shape.png";
+import shapeFlowerNew from "@/assets/shape-flower-new.png";
+import shapeHeartNew from "@/assets/shape-heart-new.png";
+import shapeWaveNew from "@/assets/shape-wave-new.png";
+import shapeKnotNew from "@/assets/shape-knot-new.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
   const heroImageRef = useRef<HTMLImageElement>(null);
-  const flowerShapeRef = useRef<HTMLImageElement>(null);
+  const flowerNewRef = useRef<HTMLImageElement>(null);
+  const heartNewRef = useRef<HTMLImageElement>(null);
+  const waveNewRef = useRef<HTMLImageElement>(null);
+  const knotNewRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     // Hero character animation
@@ -45,30 +51,43 @@ const Index = () => {
       });
     }
 
-    // Flower shape animation
-    if (flowerShapeRef.current) {
-      gsap.fromTo(
-        flowerShapeRef.current,
-        { opacity: 0, scale: 0.3, rotation: -60 },
-        {
-          opacity: 0.4,
-          scale: 1,
-          rotation: 0,
-          duration: 2,
-          ease: "power3.out",
-          delay: 0.3,
-        }
-      );
+    // New 3D shapes animations
+    const newShapes = [
+      { ref: flowerNewRef.current, delay: 0.3 },
+      { ref: heartNewRef.current, delay: 0.4 },
+      { ref: waveNewRef.current, delay: 0.5 },
+      { ref: knotNewRef.current, delay: 0.6 }
+    ];
 
-      gsap.to(flowerShapeRef.current, {
-        y: -35,
-        rotation: 20,
-        duration: 3.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-    }
+    newShapes.forEach(({ ref, delay }, index) => {
+      if (ref) {
+        gsap.fromTo(
+          ref,
+          { opacity: 0, scale: 0.3, rotation: -60 },
+          {
+            opacity: 0.5,
+            scale: 1,
+            rotation: 0,
+            duration: 2,
+            ease: "power3.out",
+            delay: delay,
+            scrollTrigger: {
+              trigger: ref,
+              start: "top 85%",
+            }
+          }
+        );
+
+        gsap.to(ref, {
+          y: index % 2 === 0 ? -30 : -25,
+          rotation: index % 2 === 0 ? 15 : -15,
+          duration: 3.5 + index * 0.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }
+    });
   }, []);
 
   return (
@@ -78,12 +97,6 @@ const Index = () => {
       
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <img 
-          ref={flowerShapeRef}
-          src={abstractFlowerShape} 
-          alt="" 
-          className="absolute top-32 right-20 w-72 h-72 opacity-40 pointer-events-none"
-        />
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -115,6 +128,12 @@ const Index = () => {
       
       {/* About Section */}
       <section id="about" className="py-24 relative overflow-hidden">
+        <img 
+          ref={flowerNewRef}
+          src={shapeFlowerNew} 
+          alt="" 
+          className="absolute top-20 right-16 w-72 h-72 opacity-50 pointer-events-none"
+        />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -137,6 +156,18 @@ const Index = () => {
       
       {/* Services Section */}
       <section id="services" className="py-24 relative overflow-hidden">
+        <img 
+          ref={heartNewRef}
+          src={shapeHeartNew} 
+          alt="" 
+          className="absolute top-32 left-10 w-64 h-64 opacity-45 pointer-events-none"
+        />
+        <img 
+          ref={waveNewRef}
+          src={shapeWaveNew} 
+          alt="" 
+          className="absolute bottom-20 right-20 w-68 h-68 opacity-50 pointer-events-none"
+        />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -202,6 +233,12 @@ const Index = () => {
       
       {/* Testimonials Section */}
       <section className="py-24 relative overflow-hidden">
+        <img 
+          ref={knotNewRef}
+          src={shapeKnotNew} 
+          alt="" 
+          className="absolute bottom-10 left-16 w-60 h-60 opacity-45 pointer-events-none"
+        />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
