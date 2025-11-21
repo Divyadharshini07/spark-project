@@ -105,10 +105,11 @@ const Index = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight">
+                Revolutionizing business with{" "}
                 <span className="gradient-text">FemoraTek</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-                Revolutionizing business with innovative digital solutions
+                Innovative digital solutions for modern businesses
               </p>
             </motion.div>
             
